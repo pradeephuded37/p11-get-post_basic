@@ -126,3 +126,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     STATIC_DIR_MYAPP,
 ]
+
+
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=465
+EMAIL_HOST_USER="pradeephuded37@gmail.com"
+EMAIL_HOST_PASSWORD="pradeepHH77**"
+EMAIL_USE_SSL=True
