@@ -48,3 +48,20 @@ def register(request):
         "akshay.python@gmail.com",[email,],fail_silently=False)
         return HttpResponse("{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>".format(first_name,last_name,email,password,phno,gender,date,month,year))
     return render(request,"myapp/registrations.html")
+
+def multi(request):
+    if request.method=="POST":
+        foods=request.POST.getlist("food")
+        languages=request.POST.getlist("language")
+        return HttpResponse("<h1>{}{}<h1>".format(foods,languages))
+    return render(request,'multiselect.html')
+
+from django.core.files.storage import FileSystemStorage
+
+def img_upload(request):
+    if request.method=="POST" and request.FILES:
+        image=request.FILES['sam']
+        fs=FileSystemStorage()
+        fs.save(image.name,image)
+                
+    return render(request,"img_upload.html")
