@@ -128,10 +128,14 @@ STATICFILES_DIRS=[
     STATIC_DIR_MYAPP,
 ]
 
+
+#used to store the uploaded video in front end
 MEDIA_URL='/media/'
 MEDIA_ROOT=MEDIA_DIR
 
 
+
+#used to send mail 
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=465
 EMAIL_HOST_USER="pradeephuded37@gmail.com"
