@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.core.mail import send_mail
 
@@ -29,7 +29,7 @@ def post_demo(request):
         return HttpResponse("<h1>Thanks for submission Mr. {}</h1>".format(name))
     return render(request,"post_demo.html")
 
-def register(request):
+def registrations(request):
     if request.method=="POST":
         first_name=request.POST.get("first_name")
         last_name=request.POST.get("last_name")
@@ -45,8 +45,8 @@ def register(request):
         else:
             gender="Male"
         send_mail("Thanks For Registration","hello Mr./Ms.{} {}\n Thanks for Registering".format(first_name,last_name),
-        "akshay.python@gmail.com",[email,],fail_silently=False)
-        return HttpResponse("{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>{}<br>".format(first_name,last_name,email,password,phno,gender,date,month,year))
+        "pradeephuded37@gmail.com",[email,],fail_silently=False)
+        return redirect("home")
     return render(request,"myapp/registrations.html")
 
 def multi(request):
@@ -61,16 +61,17 @@ from django.core.files.storage import FileSystemStorage
 def img_upload(request):            
     return render(request,"img_upload.html")
 
+
+from myapp.utilities import storage_image
 def img_display(request):
     file_url=False
     if request.method=="POST" and request.FILES:
-        image=request.FILES['sam']
-        fs=FileSystemStorage()
-        file=fs.save(image.name,image)
-        file_url=fs.url(file)
+        image1=request.FILES['sam1']
+        image2=request.FILES['sam2']
+        file_urls=map(storage_image,[image1,image2])
             
     
-    return render(request,"img_display.html",context={'file_url':file_url})
+    return render(request,"img_display.html",context={'file_urls':file_urls})
     
 
 
