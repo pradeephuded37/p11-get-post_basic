@@ -72,6 +72,14 @@ def img_display(request):
             
     
     return render(request,"img_display.html",context={'file_urls':file_urls})
+
+from myapp import forms
+def builtin(request):
+    form=forms.SampleForm()
+    return render(request,'builtin.html',{'form':form})
+
+    #forms is a file or a library
+    #in forms is a class so we inherit from forms.Form
     
 
 
