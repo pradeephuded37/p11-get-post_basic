@@ -15,3 +15,4 @@ class SampleForm(forms.Form):
     birth_month=forms.ChoiceField(choices=choices_month,required=True,label="Birth Month")
     birth_year=forms.ChoiceField(choices=choices_year,required=True,label="Birth Year")
     gender=forms.ChoiceField(choices=[('Male','Male'),('Female','Female')],widget=forms.RadioSelect)
+    image=forms.ImageField(max_length=200,allow_empty_file=False,required=True,label="profile pic")
